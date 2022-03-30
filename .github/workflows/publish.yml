@@ -20,7 +20,7 @@ jobs:
         id: project
       - name: Generate tag
         run: echo ::set-output name=value::$(date +'%Y%m%d.%H%M%S')
-        id: timetamp
+        id: timestamp
       - name: Generate Docker image
         run: mvn spring-boot:build-image -DskipTests -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USERNAME }}/items:${{ steps.project.outputs.tag }}-${{ steps.timestamp.outputs.value }}
       - name: Login to DockerHub
